@@ -1,0 +1,66 @@
+
+ <form 
+ [formGroup]="estimationForm" 
+ (ngSubmit)="estimationForm.valid"
+ autocomplete="off" class="col-4">
+     <h2 class="text-center text-primary">
+         Estimation
+     </h2>
+     <hr>
+     
+     <app-text-input 
+         [InputFormControl]='toFormControl(estimationForm.controls["goldPrice"])'
+         [label] ='"Gold price (per gram)"'
+         [type] ='"text"'
+     >
+     </app-text-input>
+     <app-text-input 
+         [InputFormControl]='toFormControl(estimationForm.controls["weight"])'
+         [label] ='"Weight (grams)"'
+         [type] ='"text"'
+     >
+     </app-text-input>
+     <app-text-input 
+         [InputFormControl]='toFormControl(estimationForm.controls["totalPrice"])'
+         [label] ='"Total Price"'
+         [type] ='"text"'
+     >
+     </app-text-input>
+     <app-text-input 
+         [InputFormControl]='toFormControl(estimationForm.controls["discount"])'
+         [label] ='"Discount %"'
+         [type] ='"text"'
+     >
+     </app-text-input>
+     <div class="row" *ngIf="validationErrors.length > 0">
+         <ul class="text-danger">
+           <li *ngFor="let error of validationErrors">
+             {{ error }}
+           </li>
+         </ul>
+       </div>
+ </form>
+<ng-container>
+   
+
+
+    <button class="btn btn-outline-primary mr-3" (click)="calculate()">
+      Calculate
+    </button>
+    <button class="btn btn-outline-primary mr-3" (click)="printToScreen()">
+      Print to Screen (not implemented)
+    </button>
+    <button class="btn btn-outline-primary mr-3" (click)="printToFile()">
+      Print to File
+    </button>
+    <button class="btn btn-outline-primary mr-3" (click)="printToPaper()">
+      Print to Paper (not implemented)
+    </button>
+    <button
+      class="btn btn-outline-primary mr-3"
+      (click)="close()"
+    >
+      Close (not implemented)
+    </button>
+  </ng-container>
+  
